@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,9 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
     public void onBindViewHolder(MakananViewHolder holder, int position) {
         holder.namaMakanan.setText(makanan.get(position).getNamaMakanan());
         holder.imgMakanan.setImageResource(makanan.get(position).getGambarMakanan());
+
+
+
     }
 
     @Override
@@ -56,6 +60,15 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
             super(itemView);
             namaMakanan= (TextView) itemView.findViewById(R.id.txt_nama_makanan);
             imgMakanan = (ImageView) itemView.findViewById(R.id.img_makanan);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println(makanan.get(getAdapterPosition()).getNamaMakanan());
+                    Toast.makeText(context, makanan.get(getAdapterPosition()).getNamaMakanan(),Toast.LENGTH_SHORT).show();
+
+                }
+            });
 
         }
     }
