@@ -1,6 +1,8 @@
 package wkwkw.asek.recycleview;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,13 +68,12 @@ public class MakananAdapter extends RecyclerView.Adapter<MakananAdapter.MakananV
                 public void onClick(View view) {
                     System.out.println(makanan.get(getAdapterPosition()).getNamaMakanan());
                     Toast.makeText(context, makanan.get(getAdapterPosition()).getNamaMakanan(),Toast.LENGTH_SHORT).show();
-
+                    Intent moveWithObjectIntent = new Intent(context, DetailActivity.class);
+                    moveWithObjectIntent.putExtra(DetailActivity.EXTRA_MAKANAN, (Parcelable) makanan.get(getAdapterPosition()));
+                    context.startActivity(moveWithObjectIntent);
                 }
             });
 
         }
     }
-
-
-
 }
